@@ -1,0 +1,27 @@
+{% extends 'tool_template/base_template.html' %}
+
+{% block main_content %}
+
+{% load static %}
+
+<div class="card" style="width: 30rem;">
+<div class="card-body">
+<form action="issue_item_save" method="post">
+<div class="card-header">Reequesting the item: {{ store_item }}</div>
+{% csrf_token %}
+<input type="hidden" name="item" value="{{ store_item.item_name }}">
+<div class="form-group">
+    
+<label for="req_qty">REq Quantity</label>
+<input type="number" class="form-control" value="1" id="req_qty" name="req_qty" min="1" max="{{issue_item.item.current_stock }}"/> 
+
+
+
+</div>
+
+<input type="submit" class="btn btn-primary" value="Submit">
+</form>
+</div>
+</div>
+
+{% endblock main_content %}

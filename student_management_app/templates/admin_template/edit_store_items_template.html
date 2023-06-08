@@ -1,0 +1,32 @@
+{% extends 'admin_template/base_template.html' %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+    <div class="container-fluid">
+
+        <div  class="row">
+            <div  class="col-md-10">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                <div style="height: 40px;"  class="card-header">
+                    <h3 class="card-title">Update  Request</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                {% comment %} Displaying the Django Form using forms.py DataAddImage {% endcomment %}
+                {% url 'edit_store_data_save' as action_path %}
+                {% include 'tool_template/form_template.html' with messages=messages form=form action_path=action_path button_text="Update" %}
+
+                </div>
+                <!-- /.card -->
+
+            </div>
+        </div>
+
+    </div><!-- /.container-fluid -->
+</section>
+
+  {% endblock main_content %}

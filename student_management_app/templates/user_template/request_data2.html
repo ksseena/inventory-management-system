@@ -1,0 +1,69 @@
+{% extends 'user_template/base_template.html' %}
+
+{% block main_content %}
+
+{% load static %}
+
+<div class="card" style="width: 68rem;padding-left: 10px;">
+<div class="card-body">
+<form action="request_item2" method="post">
+<div class="card-header">Requesting the Item(P75): {{ store_item }}</div>
+{% csrf_token %}
+<input type="hidden" name="item_name" value="{{ store_item.item_name }}">
+<div class="form-group">
+<div class="row" style="padding-top: 20px;">
+    <div class="col-lg-2 col-6">
+
+<label for="req_qty">Required Qty</label>
+<input type="number" class="form-control" value="1" id="req_qty" name="req_qty" min="1" max="{{ item.quantity }}"/> 
+
+</div>
+<div class="col-lg-2 col-6">
+<label> Line</label>
+    <select id="line" name ="line" class="form-control">
+        <option value="Line1">Line1</option>
+        <option value="Line2">Line2</option>
+        <option value="Line3">Line3</option>
+        <option value="Line4">Line4</option>
+        <option value="Line5">Line5</option>
+        <option value="Line6">Line6</option>
+        <option value="Common">Common</option>     
+    </select>
+
+</div>
+<div class="col-lg-2 col-6">
+    <label>Type</label>
+    <select id="iw_oow" name ="iw_oow" class="form-control">
+        <option value="IW">IW</option>
+        <option value="OOW">OOW</option>
+    </select>
+</div>
+<div class="col-lg-6 col-6">
+    <label>Machine Serial Number</label>
+    <input type="text" class="form-control" value="NA" id="machine_sl_no" name="machine_sl_no">  
+</div>
+
+</div>
+<div class = "row">
+    <div class="col-lg-6 col-6">
+<label>Machine Name</label>
+<input type="text" class="form-control" value="NA" id="machine_name" name="machine_name"> 
+</div>
+<div class="col-lg-6 col-6">
+<label>Station Name</label>
+<input type="text" class="form-control" value="NA" id="station" name="station"> 
+</div>
+<div class="col-lg-6 col-6">
+    <label>Purpose </label>
+    <input type="text" class="form-control" value="NA" id="purpose" name="purpose"> 
+    </div>
+</div>
+
+</div>
+
+<input type="submit" class="btn btn-primary" value="Submit">
+</form>
+</div>
+</div>
+
+{% endblock main_content %}

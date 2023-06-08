@@ -1,0 +1,347 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-light-primary elevation-4"  style="background-image:url({% static 'dist/img/Apply-Sidebar-Background.png' %})">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3">
+         <li class="nav-item">
+           <a href="{% url 'admin_home' %}">
+             <i style="color:#000066;" class="fas fa-home"></i>
+           <b style="color:#000066;"> Admin Dashboard</b>
+            </a>
+          </li>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <button class="dropdown-btn">
+              <i style="color: #330033;" class="nav-icon fas fa-user-circle">&nbsp;Users</i>
+              <i style="color: #330033;" class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'add_user' as add_user %}
+                <a href="{{ add_user }}" class="nav-link {% if request.path == add_user %} active {% endif %}">
+                  <i class="nav-icon fas fa-user-plus"></i>
+                  <p style="color: #330033;">
+                    Add 
+                  </p>
+                </a>
+              </li>
+            <li class="nav-item">
+              {% url 'manage_user' as manage_user %}
+              {% url 'edit_user' staff_id=id as edit_user %}
+              <a href="{{ manage_user }}" class="nav-link {% if request.path == manage_user %} active {% endif %} ">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  List
+                </p>
+              </a>
+            </li>
+            </div>
+            <button class="dropdown-btn">
+              <i  style="color: #330033;" class="nav-icon fas fa-user-circle">&nbsp;ToolRoom User </i>
+              <i style="color: #330033;" class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'add_toolroomuser' as add_toolroomuser %}
+                <a href="{{ add_toolroomuser }}" class="nav-link {% if request.path == add_toolroomuser %} active {% endif %}">
+                  <i  style="color: #330033;"class="nav-icon fas fa-user-plus"></i>
+                  <p style="color: #330033;">
+                    Add 
+                  </p>
+                </a>
+              </li>
+            <li class="nav-item">
+              {% url 'manage_toolroomuser' as manage_toolroomuser %}
+              <a href="{{ manage_toolroomuser }}" class="nav-link {% if request.path == manage_toolroomuser %} active {% endif %}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                 List
+                </p>
+              </a>
+            </li>
+            </div>
+
+
+
+            <button class="dropdown-btn">
+              <i style="color: #330033;" class="nav-icon fas fa-table"> Store Items(P91)</i> 
+              <i style="color: #330033;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'add_store_data' as add_store_data %}
+                <a href="{{ add_store_data }}" class="nav-link {% if request.path == add_store_data %} active {% endif %}">
+                  <i class="nav-icon fas fa-plus-square"></i>
+                  <p style="color: #330033;">
+                    Add Item
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'admin_manage_store_data' as admin_manage_store_data %}
+                
+                <a href="{{ admin_manage_store_data }}" class="nav-link {% if request.path == admin_manage_store_data %} active {% endif %} ">
+                  <i class="nav-icon fas fa-list-ol"></i>
+                  <p>
+                    Store Data
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'admin_manage_user_requests' as admin_manage_user_requests %}
+                
+                <a href="{{ admin_manage_user_requests }}" class="nav-link {% if request.path == admin_manage_user_requests %} active {% endif %} ">
+                  <i class="nav-icon fas fa-arrow-circle-right"></i>
+                  <p>
+                    User Requests
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'admin_manage_issueitems1' as admin_manage_issueitems1 %}
+                
+                <a href="{{ admin_manage_issueitems1 }}" class="nav-link {% if request.path == admin_manage_issueitems1 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-share"></i>
+                  <p>
+                    Issued Items
+                  </p>
+                </a>
+              </li>  
+              <li class="nav-item">
+                {% url 'admin_daterange_report1' as admin_daterange_report1 %}
+                
+                <a href="{{ admin_daterange_report1 }}" class="nav-link {% if request.path == admin_daterange_report1 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-share"></i>
+                  <p>
+                    Datewise Issue Report
+                  </p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                {% url 'admin_manage_receive_P91_data' as admin_manage_receive_P91_data %}
+                
+                <a href="{{ admin_manage_receive_P91_data }}" class="nav-link {% if request.path == admin_manage_receive_P91_data %} active {% endif %} ">
+                  <i class="nav-icon fas fa-arrow-circle-down"></i>
+                  <p>
+                    Received Items
+                  </p>
+                </a>
+              </li>          
+            </div>
+            <button class="dropdown-btn">
+              <i style="color: #330033;" class="nav-icon fas fa-table">Store Items(P75)</i> 
+              <i style="color : #330033;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'add_store_data2' as add_store_data2 %}
+                <a href="{{ add_store_data2 }}" class="nav-link {% if request.path == add_store_data2 %} active {% endif %}">
+                  <i class="nav-icon fas fa-plus-square"></i>
+                  <p style="color: #330033;">
+                    Add Items
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'admin_manage_store_data2' as admin_manage_store_data2 %}
+                
+                <a href="{{ admin_manage_store_data2 }}" class="nav-link {% if request.path == admin_manage_store_data2 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-list-ol"></i>
+                  <p>
+                    Store Data
+                  </p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                {% url 'admin_manage_user_requests2' as admin_manage_user_requests2 %}
+                
+                <a href="{{ admin_manage_user_requests2 }}" class="nav-link {% if request.path == admin_manage_user_requests2 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-arrow-circle-right"></i>
+                  <p>
+                    User Requests
+                  </p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                {% url 'admin_manage_issueitems2' as admin_manage_issueitems2 %}
+                
+                <a href="{{ admin_manage_issueitems2 }}" class="nav-link {% if request.path == admin_manage_issueitems2 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-share"></i>
+                  <p>
+                    Issued Items
+                  </p>
+                </a>
+              </li> 
+              
+              <li class="nav-item">
+                {% url 'admin_daterange_report' as admin_daterange_report %}
+                
+                <a href="{{ admin_daterange_report }}" class="nav-link {% if request.path == admin_daterange_report %} active {% endif %} ">
+                  <i class="nav-icon fas fa-share"></i>
+                  <p>
+                    Datewise Issue Report
+                  </p>
+                </a>
+              </li>  
+
+
+              <li class="nav-item">
+                {% url 'admin_manage_receive_P75_data' as admin_manage_receive_P75_data %}
+                
+                <a href="{{ admin_manage_receive_P75_data }}" class="nav-link {% if request.path == admin_manage_receive_P75_data %} active {% endif %} ">
+                  <i class="nav-icon fas fa-arrow-circle-down"></i>
+                  <p>
+                    Received Items
+                  </p>
+                </a>
+              </li>  
+            </div>   
+            
+            
+            <button class="dropdown-btn">
+              <i style="color:#330033;" class="nav-icon fas fa-random"> Tranfered Items</i> 
+              <i style="color:#330033;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'admin_manage_tranfer_item_P91toP75' as admin_manage_tranfer_item_P91toP75 %}
+                
+                <a href="{{ admin_manage_tranfer_item_P91toP75 }}" class="nav-link {% if request.path == admin_manage_tranfer_item_P91toP75 %} active {% endif %} ">
+                  <i class="fas fa-exchange-alt"></i>
+                  <p>
+                    P91 to P75
+                  </p>
+                </a>
+              </li>  
+              
+              <li class="nav-item">
+                {% url 'admin_manage_tranfer_item_P75toP91' as admin_manage_tranfer_item_P75toP91 %}
+                
+                <a href="{{ admin_manage_tranfer_item_P75toP91 }}" class="nav-link {% if request.path == admin_manage_tranfer_item_P75toP91 %} active {% endif %} ">
+                  <i class="fas fa-exchange-alt"></i>
+                  <p>
+                    P75 to P91
+                  </p>
+                </a>
+              </li> 
+              </div>
+
+            <button class="dropdown-btn">
+              <i style="color:#330033;" class="nav-icon fas fa-home">Damaged Items</i> 
+              <i style="color:#330033;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'admin_manage_damage_P91_data' as admin_manage_damage_P91_data %}
+                
+                <a href="{{ admin_manage_damage_P91_data }}" class="nav-link {% if request.path == admin_manage_damage_P91_data %} active {% endif %} ">
+                  <i class="fa fa-trash-o"></i>
+                  <p>
+                    Damage Items(P91) 
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'admin_manage_damage_P75_data' as admin_manage_damage_P75_data %}
+                
+                <a href="{{ admin_manage_damage_P75_data }}" class="nav-link {% if request.path == admin_manage_damage_P75_data %} active {% endif %} ">
+                  <i class="fa fa-trash-o"></i>
+                  
+                  <p>
+                    Damage Items(P75)
+                  </p>
+                </a>
+              </li> 
+            </div>
+
+
+
+            <button class="dropdown-btn">
+              <i style="color:#330033;" class="nav-icon fas fa-home">Item Summary</i> 
+              <i style="color:#330033;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'admin_manage_issueitems1_summary' as admin_manage_issueitems1_summary %}
+                
+                <a href="{{ admin_manage_issueitems1_summary }}" class="nav-link {% if request.path == admin_manage_issueitems1_summary %} active {% endif %} ">
+                  <i style="font-size: 15px;" class="material-icons">list</i>
+                  <p>
+                    P91 Items
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'admin_manage_issueitems1_summaryP75' as admin_manage_issueitems1_summaryP75 %}
+                
+                <a href="{{ admin_manage_issueitems1_summaryP75 }}" class="nav-link {% if request.path == admin_manage_issueitems1_summaryP75 %} active {% endif %} ">
+                  <i style="font-size: 15px;" class="material-icons">list</i>
+                  <p>
+                    P75 Items
+                  </p>
+                </a>
+              </li>
+              
+              
+              <li class="nav-item">
+                {% url 'admin_issue_daterange_summary1' as admin_issue_daterange_summary1 %}
+                
+                <a href="{{ admin_issue_daterange_summary1 }}" class="nav-link {% if request.path == admin_issue_daterange_summary1 %} active {% endif %} ">
+                  <i style="font-size: 15px;" class="material-icons">date_range</i>
+                  <p>
+                   Datewise Summary(P91)
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'admin_issue_daterange_summaryP75' as admin_issue_daterange_summaryP75 %}
+                
+                <a href="{{ admin_issue_daterange_summaryP75 }}" class="nav-link {% if request.path == admin_issue_daterange_summaryP75 %} active {% endif %} ">
+                  <i style="font-size: 15px;" class="material-icons">date_range</i>
+                  <p>
+                   Datewise Summary(P75)
+                  </p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                {% url 'final_admin_manage_issueitems1_summaryP91' as final_admin_manage_issueitems1_summaryP91 %}
+                
+                <a href="{{ final_admin_manage_issueitems1_summaryP91 }}" class="nav-link {% if request.path == final_admin_manage_issueitems1_summaryP91 %} active {% endif %} ">
+                  <i style="font-size: 15px;" class="material-icons">date_range</i>
+                  <p>
+                   Final Summary(P91)
+                  </p>
+                </a>
+              </li>
+
+              
+            
+              
+              
+            </div>
+            <button class="dropdown-btn">
+              <i style="color:#330033;" class="nav-icon fas fa-home"> CSV Bulk Format</i> 
+              <i style="color:#330033;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                <a href="/media/file_upload/inventory_import_format1.csv" class="nav-link">
+                  <i class="nav-icon fas fa-download"></i>
+                  <p>
+                 CSV Bulk Format
+                  </p>
+                </a>
+              </li>
+            </div>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>

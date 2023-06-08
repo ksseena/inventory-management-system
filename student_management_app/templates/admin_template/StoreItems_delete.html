@@ -1,0 +1,17 @@
+{% extends 'admin_template/base_template.html' %}
+
+{% block main_content %}
+
+{% load static %}
+
+<div class="w50 bg-primary text-white p-4 m-5">
+    <h2>Delete ? {{dlt1.id}}</h2>
+<form method="post" >
+    {% csrf_token %}
+    <div class="alert alert-danger">
+   <strong>Warning !</strong> {{dlt1.id}} will be deleted. Are you sure?
+     </div>
+    <button type="submit" class="btn btn-success">Delete</button>
+    </form>
+    </div>
+{% endblock main_content %}

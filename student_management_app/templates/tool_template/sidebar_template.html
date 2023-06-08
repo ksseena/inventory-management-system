@@ -1,0 +1,211 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-light-primary elevation-4"  style="background-image:url({% static 'dist/img/04.jpg' %})">
+      <!-- Brand Logo -->
+      <a href="{% url 'admin_home' %}" class="brand-link">
+        <img src="{% static 'dist/img/inv_logo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+        <span class="brand-text font-weight-dark" ><b style="color: #F39C12 ;">Inventory System</b></span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!--<img   style ="padding-left: 10px;padding-right: 10px;padding-top: 10px;" src="{% static 'dist/img/wistron.png' %}" class="img- elevation-8" alt="User Image" width="150" height="30">-->
+   
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="info">
+            <a style="padding-left: 10px; " href="{% url 'tool_profile' %}" class="d-block"><b style="color: #5C3317;">User:</b>&nbsp;<b style="color:  #800080;">{{ user.first_name }}</a></b>
+           
+         </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            
+
+
+            <button class="dropdown-btn">
+              <i style="color:#5C3317;" class="nav-icon fas fa-home"> Summary List</i> 
+              <i style="color:#5C3317;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'add_notifications' as add_notifications %}
+                <a href="{{ add_notifications }}" class="nav-link {% if request.path == add_notifications %} active {% endif %} ">
+                  <i class="fas fa-exchange-alt"></i>
+                  <p>
+                    Summary
+                  </p>
+                </a>
+              </li>  
+             </div> 
+
+
+            <button class="dropdown-btn">
+              <i style="color: #5C3317;" class="nav-icon fas fa-home"> Store Items(P91)</i> 
+              <i style="color: #5C3317;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+             
+              <li class="nav-item">
+                {% url 'manage_store_data' as manage_store_data %}
+                
+                <a href="{{ manage_store_data }}" class="nav-link {% if request.path == manage_store_data %} active {% endif %} ">
+                  <i class="nav-icon fas fa-list-ol"></i>
+                  <p>
+                    Store Data
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'manage_user_requests' as manage_user_requests %}
+                
+                <a href="{{ manage_user_requests }}" class="nav-link {% if request.path == manage_user_requests %} active {% endif %} ">
+                  <i class="nav-icon fas fa-arrow-circle-right"></i>
+                  <p>
+                    User Requests
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'manage_transaction' as manage_transaction %}
+                
+                <a href="{{ manage_transaction }}" class="nav-link {% if request.path == manage_transaction %} active {% endif %} ">
+                  <i class="nav-icon fas fa-share"></i>
+                  <p>
+                    Issued Items
+                  </p>
+                </a>
+              </li>  
+              <li class="nav-item">
+                {% url 'manage_receive_p91_data' as manage_receive_p91_data %}
+                
+                <a href="{{ manage_receive_p91_data }}" class="nav-link {% if request.path == manage_receive_p91_data %} active {% endif %} ">
+                  <i class="nav-icon fas fa-arrow-circle-down"></i>
+                  <p>
+                    Received Items
+                  </p>
+                </a>
+              </li>            
+            </div>
+         
+              
+            <button class="dropdown-btn">
+              <i style="color: #5C3317;" class="nav-icon fas fa-home">Store Items(P75)</i> 
+              <i style="color : #5C3317;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+             
+              <li class="nav-item">
+                {% url 'manage_store_data2' as manage_store_data2 %}
+                
+                <a href="{{ manage_store_data2 }}" class="nav-link {% if request.path == manage_store_data2 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-list-ol"></i>
+                  <p>
+                    Store Data
+                  </p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                {% url 'manage_user_requests2' as manage_user_requests2 %}
+                
+                <a href="{{ manage_user_requests2 }}" class="nav-link {% if request.path == manage_user_requests2 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-arrow-circle-right"></i>
+                  <p>
+                    User Requests
+                  </p>
+                </a>
+              </li> 
+              <li class="nav-item">
+                {% url 'manage_issueitems2' as manage_issueitems2 %}
+                
+                <a href="{{ manage_issueitems2 }}" class="nav-link {% if request.path == manage_issueitems2 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-share"></i>
+                  <p>
+                    Issued Items
+                  </p>
+                </a>
+              </li>  
+              <li class="nav-item">
+                {% url 'manage_receive_P75_data' as manage_receive_P75_data %}
+                
+                <a href="{{ manage_receive_P75_data }}" class="nav-link {% if request.path == manage_receive_P75_data %} active {% endif %} ">
+                  <i class="nav-icon fas fa-arrow-circle-down"></i>
+                  <p>
+                    Received Items
+                  </p>
+                </a>
+              </li>              
+            </div>       
+
+
+
+            <button class="dropdown-btn">
+              <i style="color:#5C3317;" class="nav-icon fas fa-home">Tranfered Items</i> 
+              <i style="color:#5C3317;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'manage_tranfer_item_P91toP75' as manage_tranfer_item_P91toP75 %}
+                
+                <a href="{{ manage_tranfer_item_P91toP75 }}" class="nav-link {% if request.path == manage_tranfer_item_P91toP75 %} active {% endif %} ">
+                  <i class="fas fa-exchange-alt"></i>
+                  <p>
+                    P91 to P75
+                  </p>
+                </a>
+              </li>  
+              
+              <li class="nav-item">
+                {% url 'manage_tranfer_item_P75toP91' as manage_tranfer_item_P75toP91 %}
+                
+                <a href="{{ manage_tranfer_item_P75toP91 }}" class="nav-link {% if request.path == manage_tranfer_item_P75toP91 %} active {% endif %} ">
+                  <i class="fas fa-exchange-alt"></i>
+                  <p>
+                    P75 to P91
+                  </p>
+                </a>
+              </li>
+             </div>       
+
+            <button class="dropdown-btn">
+              <i style="color:#5C3317;" class="nav-icon fas fa-home">Damages Items</i> 
+              <i style="color:#5C3317;"class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <li class="nav-item">
+                {% url 'manage_damage_P91_data' as manage_damage_P91_data %}
+                
+                <a href="{{ manage_damage_P91_data }}" class="nav-link {% if request.path == manage_damage_P91_data %} active {% endif %} ">
+                  <i class="fas fa-exchange-alt"></i>
+                  <p>
+                    Damage Item P91
+                  </p>
+                </a>
+              </li>  
+              
+              <li class="nav-item">
+                {% url 'manage_damage_P75_data' as manage_damage_P75_data %}
+                
+                <a href="{{ manage_damage_P75_data }}" class="nav-link {% if request.path == manage_damage_P75_data %} active {% endif %} ">
+                  <i class="fas fa-exchange-alt"></i>
+                  <p>
+                    Damage Item P75
+                  </p>
+                </a>
+              </li> 
+
+
+             
+            </div>       
+
+
+            </div>  
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>

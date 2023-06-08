@@ -1,0 +1,172 @@
+{% extends 'tool_template/base_template.html' %}
+
+{% block page_title %}
+   
+{% endblock page_title %}
+
+
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'datatables1/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'datatables1/css/buttons.dataTables.min.css' %}">
+{% endblock custom_css %}
+
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div style="height: 40px;" class="card-header">
+                <h3 class="card-title">Damage Items(P91)</h3>
+            </div>
+
+            <div class="card-body">
+                
+                <div style="padding-top: 5px;padding-bottom: 10px;padding-right: 10px;">
+              
+                </div>
+                <div class="table-responsive">
+                    <table id="example" style="font-size: small;" class="table table-bordered table-responsive-sm table-striped nowrap">
+                        <thead class="thead-light">
+                        <tr>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">#ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Date</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Item</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Shift</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">User MI ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">User Name</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Req Qty</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Category</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Line</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">IW/OOW</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Function</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">issuer</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">issuer MI ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">issue Qty</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Damage Qty</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Reason </th>
+                          
+                         </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in damage_data %}
+                        <tr style="height: 20px;">
+                        <td>{{ forloop.counter}}</td>
+                        <td>{{ row.date }}</td>
+                        <td>{{ row.issue_id.request_id.item_id.item_name }}</td>
+                        <td>
+                        {% if row.issue_time >= "06:00:00" and row.issue_time <= "14:00:00" %}
+                         A
+                        {% elif row.issue_time >= "14:00:00" and row.issue_time <= "22:00:00" %}
+                         B
+                        {% else %}
+                         C
+                        {%  endif %}
+                        </td>
+                        <td>{{ row.issue_id.request_id.user_id.admin.username }}</td>
+                        <td>{{ row.issue_id.request_id.user_id.admin.first_name }}</td>
+                        <td>{{ row.issue_id.request_id.req_qty }}</td>
+                        <td>{{ row.issue_id.request_id.item_id.category }}</td>
+                        <td>{{ row.issue_id.request_id.item_id.spec }}</td>
+                        <td>{{ row.issue_id.request_id.iw_oow }}</td>
+                        <td>{{ row.issue_id.request_id.user_id.function }}</td>
+                        <td>{{ row.user_dri_name }}</td>
+                        <td>{{ row.user_dri_MI_ID }}</td>
+                        <td>{{ row.issue_id.issue_qty }}</td>
+                        <td>{{ row.damaged_qty }}</td>
+                        <td>{{ row.reason }}</td>
+                       
+                       </tr>
+                        {% endfor %}
+                    </tbody>
+                       <tfoot>
+                         <tr> 
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">#ID</th>
+                             <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Date</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Item</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Shift</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">User MI ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">User Name</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Req Qty</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Category</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Line</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">IW/OOW</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Function</th>                
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">issuer</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">issuer MI ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">issue Qty</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Damage Qty</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Reason </th>
+                         
+                         </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+</div><!-- /.container-fluid -->
+{% endblock main_content %}
+{% block custom_js %}
+{% load static %}
+
+<script src="{% static 'datatables1/js/jquery-3.5.1.js'  %}"></script>
+<script src="{% static 'datatables1/js/jquery.dataTables.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/dataTables.buttons.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/jszip.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/pdfmake.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/vfs_fonts.js'  %}"></script>
+<script src="{% static 'datatables1/js/buttons.html5.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/buttons.print.min.js'  %}"></script>
+<script>
+            $(document).ready(function() {
+                $('#example').DataTable( {
+                    "lengthMenu": [[50, 100, 250, 500, -1], [50, 100, 250, 500, "All"]],
+                       dom:'Blftip',
+                        select: true,
+                        "scrollY": 600,
+                        "scrollX": true,
+                        buttons: [
+                                 
+                                 'copy',
+                                 {extend: 'excel',
+                                 footer: 'true',
+                                 text: 'Excel',
+                                 title:'Inventory system'  },
+                                 'csv',
+                       
+                                 ], 
+                        
+                    initComplete: function () {
+                        this.api().columns().every( function () {
+                            var column = this;
+                            var select = $('<select><option value=""></option></select>')
+                                .appendTo( $(column.footer()).empty() )
+                                .on( 'change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+            
+                                    column
+                                        .search( val ? '^'+val+'$' : '', true, false )
+                                        .draw();
+                                } );
+            
+                            column.data().unique().sort().each( function ( d, j ) {
+                                select.append( '<option value="'+d+'">'+d+'</option>' )
+                            } );
+                        } );
+                    }
+                } );
+            } );
+</script>
+{% endblock custom_js %}

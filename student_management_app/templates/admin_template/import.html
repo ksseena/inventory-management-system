@@ -1,0 +1,69 @@
+{% extends 'admin_template/base_template.html' %}
+
+{% block main_content %}
+<section class="content">
+<div class="container-fluid">
+
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="card card-primary">
+        <div class="card-header" style="height: 40px;">
+          <h3 class="card-title">Import Data</h3>
+          </div>
+          <div class="card-body">
+
+                    <form method="post" enctype="multipart/form-data" class="first-info">
+                    {% csrf_token %}
+
+
+                    {% comment %} Display Messages {% endcomment %}
+                    {% if messages %}
+                    <div class="form-group">
+                    <div class="col-12">
+                        {% for message in messages %}
+                        {% if message.tags == "error" %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        {% elif message.tags == "success" %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    </div>
+                    {% endif %}
+                    
+                    
+                  <div class="form-group my-3">
+                      <label>Select File</label>
+                    <input type="file" name="importData" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Please select file format</label>
+                    <select name="file-format" class="form-control my-3">
+                        <option selected>Choose file format...</option>
+                        <option>CSV</option>
+                        
+                      </select>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Import</button>
+                    </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+  {% endblock main_content %}

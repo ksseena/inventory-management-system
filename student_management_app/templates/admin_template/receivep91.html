@@ -1,0 +1,20 @@
+{% extends 'admin_template/base_template.html' %}
+
+{% block main_content %}
+
+{% load static %}
+
+<div class="card" style="width: 30rem;">
+<div class="card-body">
+<form action="receive_save_p91" method="post">
+<div class="card-header">Receive  the item: {{ receive_item }}</div>
+{% csrf_token %}
+<div class="form-group">
+<label for="issue_qty">Receive P91 Quantity</label>
+<input type="number" class="form-control" value="1" id="receive_qty" name="receive_qty" /> 
+</div>
+<input type="submit" class="btn btn-primary" value="Submit">
+</form>
+</div>
+</div>
+{% endblock main_content %}

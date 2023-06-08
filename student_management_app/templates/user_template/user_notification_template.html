@@ -1,0 +1,149 @@
+{% extends 'user_template/base_template.html' %}
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+        <div class="container-fluid">
+          
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+           
+            <!-- ./col -->
+            
+
+            
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box" style="background-color:#ffd300;">
+                <div class="inner">
+                  <h3>{{ approvel_pending_P91 }}</h3>
+
+                  <p>Approval Pending (P91) </p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{% url 'user_approvel_pending_P91' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div> 
+            </div>
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box" style="background-color: #ffd300;">
+                <div class="inner">
+                  <h3>{{ issue_pending_P91 }}</h3>
+
+                  <p>Issue Pending (P91) </p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{% url 'user_issue_pending_P91' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            
+            
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+               <div class="small-box" style="background-color: #00ff0d;">
+                  <div class="inner">
+                    <h3>{{ issue_done_P91 }}</h3>
+
+                    <p>Issued complete (P91)</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="{% url 'user_issued_done_P91' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+               <div class="small-box bg-danger">
+                  <div class="inner">
+                    <h3>{{ reject_P91 }}</h3>
+
+                    <p>Reject List(P91)</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="{% url 'user_reject_P91' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+               <div class="small-box " style="background-color:#ffd300;">
+                  <div class="inner">
+                    <h3>{{ approvel_pending_P75 }}</h3>
+
+                    <p>Approval Pending (P75)</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="{% url 'user_approvel_pending_P75' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+               <div class="small-box " style="background-color:#ffd300;">
+                  <div class="inner">
+                    <h3>{{ issue_pending_P75 }}</h3>
+
+                    <p>Issue Pending (P75)</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="{% url 'user_issue_pending_P75' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+               <div class="small-box " style="background-color:#00ff0d;">
+                  <div class="inner">
+                    <h3>{{ issue_done_P75 }}</h3>
+
+                    <p>Issue complete (P75)</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="{% url 'user_issued_done_P75' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+               <div class="small-box bg-danger">
+                  <div class="inner">
+                    <h3>{{ reject_P75 }}</h3>
+
+                    <p>Reject List  (P75)</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="{% url 'user_reject_P75' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            
+
+
+            
+          </div>
+         </div>
+
+        
+      
+
+        </div><!-- /.container-fluid -->
+      </section>
+
+  {% endblock main_content %}
+
+  {% block custom_js %}
+
+  {% endblock custom_js %}

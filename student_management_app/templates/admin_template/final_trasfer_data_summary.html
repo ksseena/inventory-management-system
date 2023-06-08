@@ -1,0 +1,134 @@
+      
+{% extends 'admin_template/base_template.html' %}
+
+{% block page_title %}
+   
+{% endblock page_title %}
+
+
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'datatables1/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'datatables1/css/buttons.dataTables.min.css' %}">
+{% endblock custom_css %}
+
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-info">
+            <div style="height: 40px;" class="card-header">
+                <h3 class="card-title">Consolidated Items Report(P91)</h3>
+            </div>
+
+            <div class="card-body">
+                
+                <div style="padding-top: 5px;padding-bottom: 10px;padding-right: 10px;">
+              
+                </div>
+                <div class="table-responsive">
+                    <table id="example" style="font-size: small;" class="table table-bordered table-responsive-sm table-striped nowrap">
+                        <thead class="thead-light">
+                        <tr>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">#ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Date</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Category</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Line</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Count</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Total Cost</th>
+                         </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in final_trasfer_data_summary %}
+                        <tr style="height: 20px;">
+                        <td>{{ forloop.counter}}</td>
+                        <td>{{ row.date }}</td>
+                        <td>{{ row.request_id__item_id__category }}</td>
+                        <td>{{ row.request_id__line }}</td>
+                        <td>{{ row.count }}</td>
+                        <td>{{ row.total_cost }}</td>
+                        
+                       </tr>
+                        {% endfor %}
+                    </tbody>
+                       <tfoot>
+                         <tr> 
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">#ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Date</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Category</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Line</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Count</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Total Cost</th>
+                           
+                         </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+</div><!-- /.container-fluid -->
+{% endblock main_content %}
+{% block custom_js %}
+{% load static %}
+
+<script src="{% static 'datatables1/js/jquery-3.5.1.js'  %}"></script>
+<script src="{% static 'datatables1/js/jquery.dataTables.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/dataTables.buttons.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/jszip.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/pdfmake.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/vfs_fonts.js'  %}"></script>
+<script src="{% static 'datatables1/js/buttons.html5.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/buttons.print.min.js'  %}"></script>
+<script>
+            $(document).ready(function() {
+                $('#example').DataTable( {
+                    "lengthMenu": [[50, 100, 250, 500, -1], [50, 100, 250, 500, "All"]],
+                       dom:'Blftip',
+                        select: true,
+                        "scrollY": 600,
+                        "scrollX": false,
+                        buttons: [
+                                 
+                                 'copy',
+                                 {extend: 'excel',
+                                 footer: 'true',
+                                 text: 'Excel',
+                                 title:'Inventory system'  },
+                                 'csv',
+                       
+                                 ], 
+                        
+                    initComplete: function () {
+                        this.api().columns().every( function () {
+                            var column = this;
+                            var select = $('<select><option value=""></option></select>')
+                                .appendTo( $(column.footer()).empty() )
+                                .on( 'change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+            
+                                    column
+                                        .search( val ? '^'+val+'$' : '', true, false )
+                                        .draw();
+                                } );
+            
+                            column.data().unique().sort().each( function ( d, j ) {
+                                select.append( '<option value="'+d+'">'+d+'</option>' )
+                            } );
+                        } );
+                    }
+                } );
+            } );
+</script>
+{% endblock custom_js %}

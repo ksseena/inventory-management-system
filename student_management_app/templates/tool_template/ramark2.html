@@ -1,0 +1,20 @@
+{% extends 'tool_template/base_template.html' %}
+
+{% block main_content %}
+
+{% load static %}
+
+<div class="card" style="width: 30rem;">
+<div class="card-body">
+<form action="remark2_transferitm" method="post">
+<div class="card-header">Issueing  the item(P75): {{ useritem }}</div>
+{% csrf_token %}
+<div class="form-group">
+<label for="remark">Remark</label>
+<input type="text" class="form-control"  id="remark" name="remark" /> 
+</div>
+<input type="submit" class="btn btn-primary" value="Submit">
+</form>
+</div>
+</div>
+{% endblock main_content %}

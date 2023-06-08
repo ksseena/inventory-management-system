@@ -1,0 +1,162 @@
+{% extends 'tool_template/base_template.html' %}
+
+{% block page_title %}
+   
+{% endblock page_title %}
+
+
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'datatables1/css/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="{% static 'datatables1/css/buttons.dataTables.min.css' %}">
+{% endblock custom_css %}
+
+
+{% block main_content %}
+
+{% load static %}
+
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div style="height: 40px;" class="card-header">
+                <h3 class="card-title"> tool </h3>
+            </div>
+
+            <div class="card-body">
+                
+                <div style="padding-top: 5px;padding-bottom: 10px;padding-right: 10px;">
+              
+                </div>
+                <div class="table-responsive">
+                    <table id="example" style="font-size: small;" class="table table-bordered table-responsive-sm table-striped nowrap">
+                        <thead class="thead-light">
+                        <tr>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">#ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Date</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">IM P/N</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Project</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Description</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Spec</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Vendor Part Number</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Function</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Location</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Vendor</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Qty</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Unit Price</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Currency</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Remarks</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Action</th>
+                            
+                         </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in receive_data %}
+                        <tr style="height: 20px;">
+                        <td>{{ forloop.counter}}</td>
+                        <td>{{ row.receive_date }}</td>
+                        <td>{{ row.receive_id.im_part_no }}</td>
+                        <td>{{ row.receive_id.project }}</td>
+                        <td>{{ row.receive_id.item_name }}</td>
+                        <td>{{ row.receive_id.spec }}</td>
+                        <td>{{ row.receive_id.mfr_part_no }}</td>
+                        
+                        
+                        <td>{{ row.receive_id.function }}</td>
+                        <td>{{ row.receive_id.location }}</td>
+                        <td>{{ row.receive_id.vendor_name }}</td>
+                        <td>{{ row.receive_qty }}</td>
+                        <td>{{ row.receive_id.unit_price }}</td>
+                        <td>{{ row.receive_id.currency }}</td>
+                        <td>{{ row.receive_id.currency }}</td>   
+                        <td  style="padding-top: 2px;padding-bottom: 2px;"></td>
+                       </tr>
+                        {% endfor %}
+                    </tbody>
+                       <tfoot>
+                         <tr> 
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">#ID</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Date</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">IM P/N</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Project</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Description</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Spec</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Vendor Part Number</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Function</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Location</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Vendor</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Qty</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Unit Price</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Currency</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Remarks</th>
+                            <th style="background-color: #86b9a0;color: rgb(255, 255, 255);">Action</th>
+                            
+                         </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>
+
+</div><!-- /.container-fluid -->
+{% endblock main_content %}
+{% block custom_js %}
+{% load static %}
+
+<script src="{% static 'datatables1/js/jquery-3.5.1.js'  %}"></script>
+<script src="{% static 'datatables1/js/jquery.dataTables.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/dataTables.buttons.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/jszip.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/pdfmake.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/vfs_fonts.js'  %}"></script>
+<script src="{% static 'datatables1/js/buttons.html5.min.js'  %}"></script>
+<script src="{% static 'datatables1/js/buttons.print.min.js'  %}"></script>
+<script>
+            $(document).ready(function() {
+                $('#example').DataTable( {
+                    "lengthMenu": [[50, 100, 250, 500, -1], [50, 100, 250, 500, "All"]],
+                       dom:'Blftip',
+                        select: true,
+                        "scrollY": 600,
+                        "scrollX": true,
+                        buttons: [
+                                 
+                                 'copy',
+                                 {extend: 'excel',
+                                 footer: 'true',
+                                 text: 'Excel',
+                                 title:'Inventory system'  },
+                                 'csv',
+                       
+                                 ], 
+                        
+                    initComplete: function () {
+                        this.api().columns().every( function () {
+                            var column = this;
+                            var select = $('<select><option value=""></option></select>')
+                                .appendTo( $(column.footer()).empty() )
+                                .on( 'change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+            
+                                    column
+                                        .search( val ? '^'+val+'$' : '', true, false )
+                                        .draw();
+                                } );
+            
+                            column.data().unique().sort().each( function ( d, j ) {
+                                select.append( '<option value="'+d+'">'+d+'</option>' )
+                            } );
+                        } );
+                    }
+                } );
+            } );
+</script>
+{% endblock custom_js %}

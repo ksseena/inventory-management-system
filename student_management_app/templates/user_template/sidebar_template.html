@@ -1,0 +1,214 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-light-primary elevation-4" style="background-image:url({% static 'dist/img/bg-19.jpg' %})">
+    <div style="padding-top: 10px;">
+      <a href="#" class="brand-link">
+      <img src="{% static 'dist/img/inv_logo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+      <h5><b style="color: #212F3C  ;">Inventory System</b></h5>
+      </a>
+    </div>  <!-- Sidebar -->
+   
+         
+      <div class="sidebar">
+        
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+         
+          <div class="info">
+            
+            <a href="{% url 'user_profile' %}" class="d-block"><b style="color: #000000;">User:</b>&nbsp;<b style="color:  #000080;">{{ user.first_name }}</a></b>
+           
+          </div>
+        </div>
+       
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <button class="dropdown-btn">
+                <i style="color: #800000;" class="nav-icon fas fa-home"> Summary </i>
+                <i style="color: #800000;" class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-container">
+            <li class="nav-item">
+              
+              {% url 'notification' as notification %}
+              <a href="{{ notification }}" class="nav-link {% if request.path == notification %} active {% endif %}">
+                <i class="nav-icon fas fa-chart-line"></i>
+                <p>
+                  Task Summary
+                  {% comment %} <span class="right badge badge-danger">New</span> {% endcomment %}
+                </p>
+              </a>
+            </li>
+          </div>
+ 
+          <button class="dropdown-btn">
+            <i  style="color: #800000;" class="nav-icon fas fa-list-ol">P91 List </i>
+            <i style="color: #800000;"  class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+           
+        
+            <li class="nav-item">
+              {% url 'manage_store_data_user' as manage_store_data_user %}
+              
+              <a href="{{ manage_store_data_user }}" class="nav-link {% if request.path == manage_store_data_user %} active {% endif %} ">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                 Request for Item
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              {% url 'manage_user_data' as manage_user_data %}
+              
+              <a href="{{ manage_user_data }}" class="nav-link {% if request.path == manage_user_data %} active {% endif %} ">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                 Requested Items
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              {% url 'manage_transaction_user' as manage_transaction_user %}
+              
+              <a href="{{ manage_transaction_user }}" class="nav-link {% if request.path == manage_transaction_user %} active {% endif %} ">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                 Issued Items
+                </p>
+              </a>
+            </li>
+          </div>
+            <button class="dropdown-btn">
+              <i  style="color: #800000;" class="nav-icon fas fa-list-ol">P75 List </i>
+              <i style="color: #800000;"  class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+             
+          
+              <li class="nav-item">
+                {% url 'manage_store_data2_user' as manage_store_data2_user %}
+                
+                <a href="{{ manage_store_data2_user }}" class="nav-link {% if request.path == manage_store_data2_user %} active {% endif %} ">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>
+                   Request Item
+                  </p>
+                </a>
+              </li>
+  
+              <li class="nav-item">
+                {% url 'manage_user_data2' as manage_user_data2 %}
+                
+                <a href="{{ manage_user_data2 }}" class="nav-link {% if request.path == manage_user_data2 %} active {% endif %} ">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>
+                   Requested Items
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                {% url 'manage_transaction2_user' as manage_transaction2_user %}
+                
+                <a href="{{ manage_transaction2_user }}" class="nav-link {% if request.path == manage_transaction2_user %} active {% endif %} ">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>
+                   Issued Items
+                  </p>
+                </a>
+              </li>
+              </div>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+    {% block custom_js %}
+
+    
+<script>
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  var radius = canvas.height / 2;
+  ctx.translate(radius, radius);
+  radius = radius * 0.90
+  setInterval(drawClock, 1000);
+  
+  function drawClock() {
+    drawFace(ctx, radius);
+    drawNumbers(ctx, radius);
+    drawTime(ctx, radius);
+  }
+  
+  function drawFace(ctx, radius) {
+    var grad;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, 2*Math.PI);
+    ctx.fillStyle = 'white';
+    ctx.fill();
+    grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+    grad.addColorStop(0, '#333');
+    grad.addColorStop(0.5, 'white');
+    grad.addColorStop(1, '#333');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = radius*0.1;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+    ctx.fillStyle = '#333';
+    ctx.fill();
+  }
+  
+  function drawNumbers(ctx, radius) {
+    var ang;
+    var num;
+    ctx.font = radius*0.15 + "px arial";
+    ctx.textBaseline="middle";
+    ctx.textAlign="center";
+    for(num = 1; num < 13; num++){
+      ang = num * Math.PI / 6;
+      ctx.rotate(ang);
+      ctx.translate(0, -radius*0.85);
+      ctx.rotate(-ang);
+      ctx.fillText(num.toString(), 0, 0);
+      ctx.rotate(ang);
+      ctx.translate(0, radius*0.85);
+      ctx.rotate(-ang);
+    }
+  }
+  
+  function drawTime(ctx, radius){
+      var now = new Date();
+      var hour = now.getHours();
+      var minute = now.getMinutes();
+      var second = now.getSeconds();
+      //hour
+      hour=hour%12;
+      hour=(hour*Math.PI/6)+
+      (minute*Math.PI/(6*60))+
+      (second*Math.PI/(360*60));
+      drawHand(ctx, hour, radius*0.5, radius*0.07);
+      //minute
+      minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+      drawHand(ctx, minute, radius*0.8, radius*0.07);
+      // second
+      second=(second*Math.PI/30);
+      drawHand(ctx, second, radius*0.9, radius*0.02);
+  }
+  
+  function drawHand(ctx, pos, length, width) {
+      ctx.beginPath();
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.moveTo(0,0);
+      ctx.rotate(pos);
+      ctx.lineTo(0, -length);
+      ctx.stroke();
+      ctx.rotate(-pos);
+  }
+  </script>
+  
+    {% endblock custom_js %}

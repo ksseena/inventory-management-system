@@ -1,0 +1,23 @@
+{% extends 'tool_template/base_template.html' %}
+
+{% block main_content %}
+
+{% load static %}
+
+<div class="card" style="width: 30rem;">
+<div class="card-body">
+<form action="damageitem2" method="post">
+<div class="card-header">Damage Item(P75): {{ useritem }}</div>
+{% csrf_token %}
+<div class="form-group">
+<label for="damaged_qty">Damage Quantity</label>
+<input type="number" class="form-control" value="1" id="damaged_qty" name="damaged_qty" /> 
+
+<label for="reason">Reason</label>
+<input type="text" class="form-control" value="1" id="reason" name="reason" />
+</div>
+<input type="submit" class="btn btn-primary" value="Submit">
+</form>
+</div>
+</div>
+{% endblock main_content %}
